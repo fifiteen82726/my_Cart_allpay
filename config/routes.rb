@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  get 'carts/show'
+  
+  
 
-  get 'products/index'
+  get 'line_items/create'
 
-  get 'products/show'
+  get 'line_items/update'
+
+  get 'line_items/destroy'
+
+  resources :line_items, only: %i[create update destroy]
+
+  
 
   root 'products#index'
   resources :products, only: :show
