@@ -20,5 +20,5 @@ end
     cart = Cart.create
 
     Product.all.sample(5).each do |product|
-      cart.line_items.create (product: product, unit_price: product.price, quantity: rand(4) + 1)
+      cart.line_items.create(product: product, unit_price: product.price, quantity: rand(4) + 1)
     end
