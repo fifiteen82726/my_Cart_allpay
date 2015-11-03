@@ -14,9 +14,21 @@ class LineItemsController < ApplicationController
 
 
   def update
+
   end
 
   def destroy
+
+
+    # 會先刪除一次 在執行  @line_item.destroy 
+    # 結果就發生了undefined method `destroy' for nil:NilClass的事情了 
+    @line_item = LineItem.find_by_id(params[:id])
+    @line_item.destroy
+
+    redirect_to 'cart#show'
+
+
+
   end
 
   private 

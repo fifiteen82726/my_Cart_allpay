@@ -2,11 +2,19 @@
 <p>Find me in app/views/carts/show.html.erb</p>
 
 
-<%# @cart.each do |cart| %>
 
 <h2> Cart id:<%= @cart.id %></h2>
 <h3> Cart status:<%= @cart.status %></h4>
 
 
 
-<%# end %>
+<!-- 假如說 相同產品 想要合併時 該如何做？ -->
+<% @line_items.each do |line_item| %>
+
+<h3> 
+	Product name  <%= line_item.product.name %>
+</h3>
+
+<%= link_to "Delete", line_item_path(line_item), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% end %>
