@@ -49,17 +49,21 @@
 
 	<td>
 		
-	<%= form_for line_item do |f| %>
+
+
+    <!-- 一陣錯亂,不知道如何更新購物車 -->
+	<%= form_for @cart do |f| %>
 
 		<%= fields_for :line_items, line_item do |ff| %>
 	  	<% a = ff.object %>
 	  
 		    <td><%= link_to a.product.name, a.product %></td>
+		    <!-- 為何link 到商品的頁面後, 按下加入購物車 是跑到update的地方,而不是create  -->
 		    <td><%= ff.number_field :quantity %></td>
 		
 		<% end %>
 
-		<td><%=  f.submit %></td>
+	<td><%=  f.submit %></td>
 
 	<% end %>
 
