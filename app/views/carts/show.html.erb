@@ -43,6 +43,38 @@
 	<td>
 
 		<%= link_to "Delete", line_item_path(line_item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
+
+
+	</td>
+
+	<td>
+		
+	<%= form_for line_item do |f| %>
+
+		<%= fields_for :line_items, line_item do |ff| %>
+	  	<% a = ff.object %>
+	  
+		    <td><%= link_to a.product.name, a.product %></td>
+		    <td><%= ff.number_field :quantity %></td>
+		
+		<% end %>
+
+		<td><%=  f.submit %></td>
+
+	<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</td>
 	</tr>
 
@@ -53,3 +85,8 @@
 <td> $<%= sum %></td>
 </tbody>
 </table>
+
+
+
+
+
