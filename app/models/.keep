@@ -1,0 +1,6 @@
+params = { cart: {
+   line_items_attributes: [
+    { quatity: 10 },
+    { product_id: 21 }
+  ]
+}}

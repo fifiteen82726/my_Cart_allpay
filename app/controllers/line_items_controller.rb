@@ -15,27 +15,37 @@ class LineItemsController < ApplicationController
 
   def update
 
-      respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
+    @line_item = LineItem.find_by_id(params[:id])
+     if @line_item.update(line_item_params)
+        
+        redirect_to cart_path, notice: '􏰂􏰃􏰀􏰁Product was successfully updated' 
+     else 
+        redirect_to cart_path, notice: '􏰂􏰃􏰀􏰁Product was Not successfully updated' 
     end
+     # @line_item = LineItem.find_by_id(params[:id])
+     # ap @line_item
+     # response
+
+    #   respond_to do |format|
+    #   if @line_item.update(line_item_params)
+    #     format.html { redirect_to @line_item, notice: 'Product was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @line_item }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @line_item.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
   end
 
   def destroy
 
 
-    # 會先刪除一次 在執行  @line_item.destroy 
-    # 結果就發生了undefined method `destroy' for nil:NilClass的事情了 
     @line_item = LineItem.find_by_id(params[:id])
+    ap @line_item
     @line_item.destroy
 
-    redirect_to 'cart#show'
+    redirect_to cart_path
 
 
 
