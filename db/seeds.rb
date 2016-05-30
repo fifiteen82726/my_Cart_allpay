@@ -11,14 +11,31 @@ Cart.destroy_all
 
 
 
- 20.times do |i|
-      Product.create(
-        name: "product no.#{i}", description: "description no.#{i}",
-        price: (rand(10) + 1) * 50, stock: rand(91) + 10
-      )
+20.times do |i|
+	Product.create(
+		name: "product no.#{i}", description: "description no.#{i}",
+		price: (rand(10) + 1) * 50, stock: rand(91) + 10
+		)
 end
-    cart = Cart.create
+cart = Cart.create
 
-    Product.all.sample(5).each do |product|
-      cart.line_items.create(product: product, unit_price: product.price, quantity: rand(4) + 1)
-    end
+Product.all.sample(5).each do |product|
+	cart.line_items.create(product: product, unit_price: product.price, quantity: rand(4) + 1)
+end
+
+
+
+paid_order = Order.create(name: 'Tony',address: '􏰆􏰄樹林')
+
+	Product.all.sample(5).each do |product|
+		paid_order.line_items.create(unit_price: product.price, quantity: rand(4) + 1)
+	end
+	
+
+
+#paid_order.trades.create paid: true
+
+# unpaid_order = Order.create name: 'Jason', address: '􏰅􏰂', payment_method: 'ATM' unpaid_order.line_items.create(
+# 	product: Product.all.sample, unit_price: 456, quantity: 2
+# 	)
+# unpaid_order.trades.create paid: false
